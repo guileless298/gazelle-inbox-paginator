@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Gazelle Inbox Paginator
-// @version      1.0.1
+// @version      1.0.2
 // @description  Paginates inbox threads for Gazelle sites
 // @author       guileless298
 // @match        https://*/inbox.php?action=viewconv&id=*
@@ -54,14 +54,14 @@
                 pager.appendChild(pager_first);
                 pager.append(" ");
                 pager.appendChild(pager_prev);
-                pager.append("|");
+                pager.append(" | ");
             }
 
             const start = Math.max(0, current_page - 4 + Math.min(0, page_count - current_page - 5));
             const end = Math.min(start + 8, page_count - 1);
 
             for (let i=start; i <= end; i++) {
-                if (i > start) pager.append("|");
+                if (i > start) pager.append(" | ");
                 const s = i * PAGE_SIZE + 1;
                 const e = Math.min((i+1) * PAGE_SIZE, messages.length);
                 const label = s + "-" + e;
@@ -87,7 +87,7 @@
                 pager_last.onclick = () => set_page(page_count - 1);
                 pager_last.appendChild(make_strong("Last >>"));
 
-                pager.append("|");
+                pager.append(" | ");
                 pager.appendChild(pager_next);
                 pager.append(" ");
                 pager.appendChild(pager_last);
