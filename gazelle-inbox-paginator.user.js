@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Gazelle Inbox Paginator
-// @version      2025-07-03
+// @version      1.0.1
 // @description  Paginates inbox threads for Gazelle sites
 // @author       guileless298
 // @match        https://*/inbox.php?action=viewconv&id=*
@@ -81,11 +81,11 @@
                 pager_next.href = "#" + ((current_page + 1) * PAGE_SIZE + 1);
                 pager_next.onclick = () => set_page(current_page + 1);
                 pager_next.classList.add("pager_next");
-                pager_next.appendChild(make_strong("> Next"));
+                pager_next.appendChild(make_strong("Next >"));
                 const pager_last = document.createElement("a");
                 pager_last.href = "#" + ((page_count - 1) * PAGE_SIZE + 1);
                 pager_last.onclick = () => set_page(page_count - 1);
-                pager_last.appendChild(make_strong(">> Last"));
+                pager_last.appendChild(make_strong("Last >>"));
 
                 pager.append("|");
                 pager.appendChild(pager_next);
